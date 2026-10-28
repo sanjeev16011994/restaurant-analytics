@@ -1,5 +1,5 @@
 /**
- * Kitchen Spurs Browser Analytics SDK
+ * Ember Browser Analytics SDK
  * A lightweight, zero-dependency, resilient client-side event tracking library.
  *
  * Features:
@@ -27,17 +27,17 @@ export interface BrowserSDKConfig {
 export type EventCallback = (event: IngestEventInput) => void;
 
 const STORAGE_KEYS = {
-  ANONYMOUS_ID: '_ksa_anon_id',
-  SESSION_ID: '_ksa_session_id',
-  SESSION_EXP: '_ksa_session_exp',
-  USER_ID: '_ksa_user_id',
-  USER_TRAITS: '_ksa_user_traits',
-  OFFLINE_QUEUE: '_ksa_offline_queue',
+  ANONYMOUS_ID: '_ea_anon_id',
+  SESSION_ID: '_ea_session_id',
+  SESSION_EXP: '_ea_session_exp',
+  USER_ID: '_ea_user_id',
+  USER_TRAITS: '_ea_user_traits',
+  OFFLINE_QUEUE: '_ea_offline_queue',
 };
 
 const SESSION_TIMEOUT_MS = 30 * 60 * 1000; // 30 minutes inactivity timeout
 
-export class KitchenSpursAnalytics {
+export class EmberAnalytics {
   private endpoint: string;
   private writeKey: string;
   private batchSize: number;
@@ -55,7 +55,7 @@ export class KitchenSpursAnalytics {
 
   constructor(config: BrowserSDKConfig = {}) {
     this.endpoint = config.endpoint || '/api/v1/events';
-    this.writeKey = config.writeKey || 'pk_ks_live_default';
+    this.writeKey = config.writeKey || 'pk_ember_live_default';
     this.batchSize = config.batchSize ?? 5;
     this.flushIntervalMs = config.flushIntervalMs ?? 2500;
     this.maxQueueSize = config.maxQueueSize ?? 100;
@@ -80,7 +80,7 @@ export class KitchenSpursAnalytics {
       if (config.autoTrackPages !== undefined) this.autoTrackPages = config.autoTrackPages;
     }
 
-    this.log('Initializing KitchenSpurs Browser Analytics SDK...');
+    this.log('Initializing Ember Browser Analytics SDK...');
 
     // Load offline queued events from previous session
     this.loadOfflineQueue();
@@ -420,7 +420,7 @@ export class KitchenSpursAnalytics {
       timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
       platform: navigator.platform,
       library: {
-        name: 'kitchen-spurs-browser-sdk',
+        name: 'ember-browser-sdk',
         version: '1.0.0',
       },
     };
@@ -479,16 +479,16 @@ export class KitchenSpursAnalytics {
 
   private log(...args: unknown[]): void {
     if (this.debug) {
-      console.log('[KitchenSpursAnalytics]', ...args);
+      console.log('[EmberAnalytics]', ...args);
     }
   }
 
   private warn(...args: unknown[]): void {
     if (this.debug) {
-      console.warn('[KitchenSpursAnalytics]', ...args);
+      console.warn('[EmberAnalytics]', ...args);
     }
   }
 }
 
 // Export singleton instance for simple plug-and-play usage
-export const analytics = new KitchenSpursAnalytics();
+export const analytics = new EmberAnalytics();

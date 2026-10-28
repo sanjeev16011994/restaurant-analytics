@@ -1,5 +1,5 @@
 /**
- * Kitchen Spurs Analytics Core Data Types & Contracts
+ * Ember Analytics Core Data Types & Contracts
  */
 
 export type EventSource = 'browser' | 'server';

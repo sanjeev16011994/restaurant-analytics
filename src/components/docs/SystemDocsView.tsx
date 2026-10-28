@@ -27,18 +27,18 @@ export const SystemDocsView: React.FC = () => {
   const phpSnippet = `<?php
 namespace App\\Services;
 
-use KitchenSpurs\\Analytics\\KitchenSpursAnalytics;
+use Ember\\Analytics\\EmberAnalytics;
 use App\\Models\\Order;
 
 class OrderAnalyticsService
 {
-    protected KitchenSpursAnalytics $analytics;
+    protected EmberAnalytics $analytics;
 
     public function __construct()
     {
-        $this->analytics = new KitchenSpursAnalytics([
-            'endpoint' => config('services.kitchen_spurs.endpoint'),
-            'api_key'  => config('services.kitchen_spurs.api_key'),
+        $this->analytics = new EmberAnalytics([
+            'endpoint' => config('services.ember_analytics.endpoint'),
+            'api_key'  => config('services.ember_analytics.api_key'),
             'timeout'  => 3,
         ]);
     }
@@ -106,7 +106,7 @@ analytics.identify('alexander.reed@example.com', {
           Technical Architecture & Specification
         </div>
         <h1 className="text-3xl sm:text-5xl font-serif font-bold text-white mb-3">
-          Kitchen Spurs Analytics Engine
+          Ember Analytics Engine
         </h1>
         <p className="text-stone-300 text-sm sm:text-base leading-relaxed max-w-3xl">
           A high-reliability, dual-tier event tracking system capturing client-side UI telemetry

@@ -1,5 +1,5 @@
 /**
- * Kitchen Spurs Server Tracking SDK
+ * Ember Server Tracking SDK
  * Lightweight, robust client for dispatching business events from server-side services.
  *
  * Designed for:
@@ -41,7 +41,7 @@ export interface ServerIdentifyParams {
 
 export type ServerEventCallback = (event: IngestEventInput) => void;
 
-export class KitchenSpursServerAnalytics {
+export class EmberServerAnalytics {
   private endpoint: string;
   private apiKey: string;
   private environment: string;
@@ -51,7 +51,7 @@ export class KitchenSpursServerAnalytics {
 
   constructor(config: ServerAnalyticsConfig = {}) {
     this.endpoint = config.endpoint || 'http://localhost:3000/api/v1/events';
-    this.apiKey = config.apiKey || process.env.KITCHEN_SPURS_SERVER_KEY || 'sk_ks_live_default';
+    this.apiKey = config.apiKey || process.env.EMBER_SERVER_KEY || 'sk_ember_live_default';
     this.environment = config.environment || process.env.NODE_ENV || 'production';
     this.directDbMode = config.directDbMode ?? true; // Default to direct DB for zero-latency local Next.js API
     this.onError = config.onError;
@@ -77,7 +77,7 @@ export class KitchenSpursServerAnalytics {
         serverEnvironment: this.environment,
         platform: `Node.js ${process.version}`,
         library: {
-          name: 'kitchen-spurs-server-sdk',
+          name: 'ember-server-sdk',
           version: '1.0.0',
         },
         ...params.context,
@@ -155,7 +155,7 @@ export class KitchenSpursServerAnalytics {
       if (this.onError) {
         this.onError(err, event);
       } else {
-        console.error('[KitchenSpursServerAnalytics] Tracking failed:', err);
+        console.error('[EmberServerAnalytics] Tracking failed:', err);
       }
       return false;
     }
@@ -163,4 +163,4 @@ export class KitchenSpursServerAnalytics {
 }
 
 // Global server singleton
-export const serverAnalytics = new KitchenSpursServerAnalytics();
+export const serverAnalytics = new EmberServerAnalytics();

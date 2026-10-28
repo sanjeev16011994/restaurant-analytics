@@ -33,7 +33,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-serif tracking-wide font-bold text-lg text-white">KITCHEN SPURS</span>
+              <span className="font-serif tracking-wide font-bold text-lg text-white">EMBER & OAK</span>
               <span className="text-[10px] uppercase tracking-widest px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-semibold border border-amber-500/30">
                 Analytics Demo
               </span>

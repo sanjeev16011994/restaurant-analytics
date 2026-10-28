@@ -51,7 +51,7 @@ export const RestaurantStore: React.FC<RestaurantStoreProps> = ({ onGoToDashboar
       batchSize: 4,
     });
     // Track home page visit
-    analytics.page('Kitchen Spurs - Artisanal Menu');
+    analytics.page('Ember & Oak - Artisanal Menu');
   }, []);
 
   // Fetch menu
@@ -234,7 +234,7 @@ export const RestaurantStore: React.FC<RestaurantStoreProps> = ({ onGoToDashboar
       <section className="relative h-96 w-full overflow-hidden border-b border-stone-800">
         <Image
           src="/restaurant-hero.jpg"
-          alt="Kitchen Spurs Grill"
+          alt="Ember & Oak Grill"
           fill
           priority
           className="object-cover object-center filter brightness-50"
@@ -246,7 +246,7 @@ export const RestaurantStore: React.FC<RestaurantStoreProps> = ({ onGoToDashboar
             Wood-Fired Ember Kitchen
           </div>
           <h1 className="text-4xl sm:text-6xl font-serif font-extrabold tracking-tight text-white mb-2">
-            KITCHEN SPURS
+            EMBER & OAK
           </h1>
           <p className="text-stone-300 max-w-2xl text-base sm:text-lg mb-6 leading-relaxed">
             Artisanal steaks, 72-hour fermented wood-fired pizzas, and craft smokehouse cocktails.

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Kitchen Spurs | Analytics System & Restaurant Demo',
+  title: 'Ember & Oak | Real-Time Analytics System & Restaurant Demo',
   description:
     'A high-reliability analytics engine capturing browser interactions and server transactional events with real-time dashboard visualizations.',
 };

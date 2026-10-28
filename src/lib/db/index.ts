@@ -351,7 +351,7 @@ export function getPopularPages(fromMs?: number, toMs?: number, limit = 10): Pag
     .prepare(`
       SELECT 
         COALESCE(page_path, '/') as path,
-        COALESCE(page_title, 'Kitchen Spurs') as title,
+        COALESCE(page_title, 'Ember & Oak') as title,
         COUNT(*) as views,
         COUNT(DISTINCT anonymous_id) as unique_visitors
       FROM events
@@ -596,16 +596,16 @@ export function seedHistoricData() {
     { id: 'item_margherita', name: 'Wood-Fired Margherita D.O.P.', price: 21.0, category: 'pizza' },
     { id: 'item_burrata', name: 'Heirloom Burrata Crostini', price: 16.5, category: 'starter' },
     { id: 'item_lavacake', name: 'Smoked Bourbon Lava Cake', price: 14.0, category: 'dessert' },
-    { id: 'item_oldfashioned', name: 'Kitchen Spurs Smoked Old Fashioned', price: 18.0, category: 'drinks' },
+    { id: 'item_oldfashioned', name: 'Smoked Bourbon Old Fashioned', price: 18.0, category: 'drinks' },
   ];
 
   const pages = [
-    { path: '/', title: 'Kitchen Spurs | Artisanal Kitchen & Grill' },
-    { path: '/menu', title: 'Menu & Daily Specials | Kitchen Spurs' },
-    { path: '/menu/steaks', title: 'Wood-Fired Steaks | Kitchen Spurs' },
-    { path: '/menu/pizzas', title: 'Artisan Neapolitan Pizzas | Kitchen Spurs' },
-    { path: '/cart', title: 'Your Order Cart | Kitchen Spurs' },
-    { path: '/checkout', title: 'Secure Checkout | Kitchen Spurs' },
+    { path: '/', title: 'Ember & Oak | Artisanal Kitchen & Grill' },
+    { path: '/menu', title: 'Menu & Daily Specials | Ember & Oak' },
+    { path: '/menu/steaks', title: 'Wood-Fired Steaks | Ember & Oak' },
+    { path: '/menu/pizzas', title: 'Artisan Neapolitan Pizzas | Ember & Oak' },
+    { path: '/cart', title: 'Your Order Cart | Ember & Oak' },
+    { path: '/checkout', title: 'Secure Checkout | Ember & Oak' },
   ];
 
   const eventsToInsert: IngestEventInput[] = [];

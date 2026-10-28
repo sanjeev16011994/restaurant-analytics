@@ -1,28 +1,28 @@
 <?php
 
-namespace KitchenSpurs\Analytics;
+namespace Ember\Analytics;
 
 /**
- * Kitchen Spurs PHP & Laravel Server Tracking Client
+ * Ember PHP & Laravel Server Tracking Client
  *
  * Lightweight, resilient HTTP client for sending transactional business events
  * from Laravel controllers, jobs, and event listeners.
  *
  * Example Usage in Laravel:
  *
- *   use KitchenSpurs\Analytics\KitchenSpursAnalytics;
+ *   use Ember\Analytics\EmberAnalytics;
  *
- *   $tracker = new KitchenSpursAnalytics([
- *       'endpoint' => config('services.kitchen_spurs.endpoint', 'http://localhost:3000/api/v1/events'),
- *       'api_key'  => config('services.kitchen_spurs.api_key', 'sk_ks_live_default'),
+ *   $tracker = new EmberAnalytics([
+ *       'endpoint' => config('services.ember_analytics.endpoint', 'http://localhost:3000/api/v1/events'),
+ *       'api_key'  => config('services.ember_analytics.api_key', 'sk_ember_live_default'),
  *   ]);
  *
  *   // Track Order Creation
  *   $tracker->track([
  *       'event'          => 'order_created',
  *       'user_id'        => $order->user_id,
- *       'anonymous_id'   => request()->cookie('_ksa_anon_id') ?? 'anon_guest',
- *       'session_id'     => request()->cookie('_ksa_session_id') ?? 'sess_server',
+ *       'anonymous_id'   => request()->cookie('_ea_anon_id') ?? 'anon_guest',
+ *       'session_id'     => request()->cookie('_ea_session_id') ?? 'sess_server',
  *       'idempotency_key'=> 'ord_' . $order->id,
  *       'properties'     => [
  *           'order_id'       => $order->id,
@@ -33,7 +33,7 @@ namespace KitchenSpurs\Analytics;
  *       ],
  *   ]);
  */
-class KitchenSpursAnalytics
+class EmberAnalytics
 {
     protected string $endpoint;
     protected string $apiKey;
@@ -43,7 +43,7 @@ class KitchenSpursAnalytics
     public function __construct(array $config = [])
     {
         $this->endpoint = $config['endpoint'] ?? 'http://localhost:3000/api/v1/events';
-        $this->apiKey   = $config['api_key'] ?? 'sk_ks_live_default';
+        $this->apiKey   = $config['api_key'] ?? 'sk_ember_live_default';
         $this->timeout  = $config['timeout'] ?? 3; // 3 seconds max timeout
         $this->debug    = $config['debug'] ?? false;
     }
@@ -66,7 +66,7 @@ class KitchenSpursAnalytics
                 'serverEnvironment' => getenv('APP_ENV') ?: 'production',
                 'platform'          => 'PHP ' . PHP_VERSION,
                 'library'           => [
-                    'name'    => 'kitchen-spurs-php-sdk',
+                    'name'    => 'ember-php-sdk',
                     'version' => '1.0.0',
                 ],
             ], $params['context'] ?? []),
@@ -122,7 +122,7 @@ class KitchenSpursAnalytics
         curl_close($ch);
 
         if ($this->debug && ($error || $httpCode >= 400)) {
-            error_log("[KitchenSpursAnalytics PHP] HTTP {$httpCode}: {$error} - Response: {$result}");
+            error_log("[EmberAnalytics PHP] HTTP {$httpCode}: {$error} - Response: {$result}");
         }
 
         return ($httpCode >= 200 && $httpCode < 300);

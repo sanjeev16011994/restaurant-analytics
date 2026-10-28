@@ -4,10 +4,10 @@ import type { IngestEventInput, IngestionResponse } from '@/lib/analytics/types'
 
 // Valid API Keys
 const VALID_KEYS = new Set([
-  'pk_ks_live_default',
-  'sk_ks_live_default',
-  process.env.KITCHEN_SPURS_WRITE_KEY || 'pk_ks_live_default',
-  process.env.KITCHEN_SPURS_SERVER_KEY || 'sk_ks_live_default',
+  'pk_ember_live_default',
+  'sk_ember_live_default',
+  process.env.EMBER_WRITE_KEY || 'pk_ember_live_default',
+  process.env.EMBER_SERVER_KEY || 'sk_ember_live_default',
 ]);
 
 export async function POST(req: NextRequest) {
